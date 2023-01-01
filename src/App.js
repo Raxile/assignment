@@ -1,8 +1,13 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import MainNavigation from './shared/components/Navigation/MainNavigation'
 
 const App = () => {
   return (
-    <div>App</div>
+    <Router>
+      <MainNavigation/>
+    </Router>
+
   )
 }
 
