@@ -56,6 +56,18 @@ const getInformation = async (req,res,next) =>{
     res.json({allinformation:allinformation}) ; 
 }
 
+const getInformationById = async (req,res,next) =>{
+    let singleinformation;
+    const infoId = req.params.iid
+    try {
+        singleinformation = await Information.findById(infoId)
+    } catch (err) {
+        const error = new HttpError('Something went wrong , could not find a place',500);
+        return next(error);
+    }
+    res.json({singleinformation:singleinformation}) ; 
+}
+
 const updateInformation = async(req,res,next) =>{
     const errors = validationResult(req);
   if(!errors.isEmpty()){
@@ -111,5 +123,6 @@ const deleteInformation = async (req,res,next)=>{
 
 exports.createInformation = createinformation;
 exports.getInformation = getInformation;
+exports.getInformationById = getInformationById;
 exports.updateInformation = updateInformation;
 exports.deleteInformation =deleteInformation; 

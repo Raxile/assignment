@@ -15,6 +15,8 @@ router.post('/addinformation', [
 
 router.get('/',informationControllers.getInformation);
 
+router.get('/:iid',informationControllers.getInformationById)
+
 router.patch('/updateinformation/:iid',[
     check('name').not().isEmpty(),
     check('dob'),
